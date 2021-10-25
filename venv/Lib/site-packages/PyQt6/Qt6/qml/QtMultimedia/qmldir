@@ -1,0 +1,8 @@
+module QtMultimedia
+linktarget Qt6::quickmultimedia
+plugin quickmultimediaplugin
+classname QMultimediaQuickModule
+typeinfo plugins.qmltypes
+prefer :/qt-project.org/imports/QtMultimedia/
+Video 5.0 Video.qml
+

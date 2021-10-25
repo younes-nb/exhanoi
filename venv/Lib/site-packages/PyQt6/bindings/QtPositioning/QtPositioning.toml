@@ -1,0 +1,6 @@
+# Automatically generated configuration for PyQt6.QtPositioning.
+
+sip-version = "6.2.0"
+sip-abi-version = "13.1"
+module-tags = ["Qt_6_2_0", "Windows"]
+module-disabled-features = []

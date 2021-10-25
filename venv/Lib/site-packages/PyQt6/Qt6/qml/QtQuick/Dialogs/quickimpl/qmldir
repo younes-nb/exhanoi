@@ -1,0 +1,29 @@
+module QtQuick.Dialogs.quickimpl
+linktarget Qt6::qtquickdialogs2quickimplplugin
+optional plugin qtquickdialogs2quickimplplugin
+classname QtQuickDialogs2QuickImplPlugin
+typeinfo plugins.qmltypes
+prefer :/qt-project.org/imports/QtQuick/Dialogs/quickimpl/
+FileDialog 6.0 qml/FileDialog.qml
+FileDialogDelegate 6.0 qml/FileDialogDelegate.qml
+FileDialogDelegateLabel 6.0 qml/FileDialogDelegateLabel.qml
+FolderBreadcrumbBar 6.0 qml/FolderBreadcrumbBar.qml
+FontDialog 6.0 qml/FontDialog.qml
+FontDialogContent 6.0 qml/FontDialogContent.qml
+FileDialog 6.0 qml/+Fusion/FileDialog.qml
+FileDialogDelegate 6.0 qml/+Fusion/FileDialogDelegate.qml
+FolderBreadcrumbBar 6.0 qml/+Fusion/FolderBreadcrumbBar.qml
+FontDialog 6.0 qml/+Fusion/FontDialog.qml
+FileDialog 6.0 qml/+Imagine/FileDialog.qml
+FileDialogDelegate 6.0 qml/+Imagine/FileDialogDelegate.qml
+FolderBreadcrumbBar 6.0 qml/+Imagine/FolderBreadcrumbBar.qml
+FontDialog 6.0 qml/+Imagine/FontDialog.qml
+FileDialog 6.0 qml/+Material/FileDialog.qml
+FileDialogDelegate 6.0 qml/+Material/FileDialogDelegate.qml
+FolderBreadcrumbBar 6.0 qml/+Material/FolderBreadcrumbBar.qml
+FontDialog 6.0 qml/+Material/FontDialog.qml
+FileDialog 6.0 qml/+Universal/FileDialog.qml
+FileDialogDelegate 6.0 qml/+Universal/FileDialogDelegate.qml
+FolderBreadcrumbBar 6.0 qml/+Universal/FolderBreadcrumbBar.qml
+FontDialog 6.0 qml/+Universal/FontDialog.qml
+
