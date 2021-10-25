@@ -1,7 +1,5 @@
-from PyQt6.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QPushButton, QLayout, \
-    QFrame, QStyle, QComboBox
+from PyQt6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QPushButton, QComboBox
 from PyQt6.QtGui import QPixmap
-from PyQt6 import QtCore
 from PyQt6.QtCore import Qt
 
 
@@ -11,6 +9,7 @@ class FirstView(QWidget):
         self.geometry = self.setGeometry(100, 100, 500, 450)
         self.setWindowTitle("Exhanoi")
         self.setStyleSheet("background-color: #323232;")
+
         self.layout = QVBoxLayout(self)
 
         hanoiImage = QLabel()
@@ -37,24 +36,27 @@ class FirstView(QWidget):
 
         self.showButton = QPushButton("Show")
         self.showButton.setFixedSize(95, 35)
-        self.showButton.setStyleSheet("""   
-                    QPushButton:hover{  
-                        background-color: #F29C1F; 
+        self.showButton.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.showButton.setStyleSheet("""
+                    QPushButton:hover{
+                        background-color: #F29C1F;
                         color: #4B4B4B;
-                    }  
-                    QPushButton{  
-                        background-color: #4B4B4B; 
-                        color: #F29C1F; 
-                        font-size: 18px;  
-                        border-radius: 5px; 
-                        border:1px solid #4B4B4B;   
-                        padding: 5px; 
-                    } 
+                    }
+                    QPushButton{
+                        background-color: #4B4B4B;
+                        color: #F29C1F;
+                        font-size: 18px;
+                        border-radius: 5px;
+                        border:1px solid #4B4B4B;
+                        padding: 5px;
+                    }
                 """)
+
         self.layout.addWidget(hanoiImage)
         self.layout.addWidget(hanoiLabel)
         self.layout.addWidget(self.selectionMenu)
         self.layout.addWidget(self.showButton)
+
         self.layout.addStretch(1)
         self.layout.setSpacing(20)
-        self.layout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
