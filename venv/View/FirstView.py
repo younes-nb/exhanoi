@@ -31,7 +31,7 @@ class FirstView(QWidget):
                     font-size :15px;  
                 """)
         self.selectionMenu.setPlaceholderText("Number of disks in each rod")
-        for num in range(1, 4):
+        for num in range(1, 5):
             self.selectionMenu.addItem(str(num))
 
         self.showButton = QPushButton("Show")

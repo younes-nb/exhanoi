@@ -3,24 +3,25 @@ from PyQt6.QtCore import Qt, QRect
 
 
 class MainView(QWidget):
-    def __init__(self, count):
+    def __init__(self, n):
         super().__init__()
-        self.geometry = self.setGeometry(100, 100, 600, 500)
+        self.geometry = self.setGeometry(100, 100, 600, 600)
         self.setWindowTitle("Exhanoi")
         self.setStyleSheet("background-color: #323232;")
 
-        rods_x = (130, 295, 460)
-        for x in rods_x:
-            rod = QFrame(self)
-            rod.setGeometry(x, 100, 10, 250)
-            rod.setFrameShape(QFrame.Shape.StyledPanel)
-            rod.setStyleSheet(""" 
+        pegs_x = (130, 295, 460)
+        pegs_y = 150
+        for x in pegs_x:
+            peg = QFrame(self)
+            peg.setGeometry(x, pegs_y, 10, 350)
+            peg.setFrameShape(QFrame.Shape.StyledPanel)
+            peg.setStyleSheet(""" 
             background-color: lightgray; 
             border-radius: 5px; 
             """)
 
         ground = QFrame(self)
-        ground.setGeometry(50, 345, 500, 25)
+        ground.setGeometry(50, 495, 500, 25)
         ground.setFrameShape(QFrame.Shape.StyledPanel)
         ground.setStyleSheet(""" 
                 background-color: #4C4C4C; 
@@ -28,11 +29,11 @@ class MainView(QWidget):
                 """)
 
         self.disks = []
-        diskWidth = 120
+        diskWidth = 150
         x = 0
-        disk_y = 320
-        for d in range(count * 3):
-            disk_x = rods_x[x]
+        disk_y = 470
+        for d in range(n * 3):
+            disk_x = pegs_x[x]
             disk = QFrame(self)
             disk.setToolTip(str(d + 1))
             disk.setGeometry(int(disk_x - (diskWidth / 2) + 5), disk_y, diskWidth, 20)
@@ -49,8 +50,9 @@ class MainView(QWidget):
             if ((d + 1) % 3 == 0):
                 disk_y -= 25
 
+        buttons_y = 540
         self.manualButton = QPushButton("Manual Move", self)
-        self.manualButton.setGeometry(50, 400, 120, 35)
+        self.manualButton.setGeometry(50, buttons_y, 120, 35)
         self.manualButton.setCursor(Qt.CursorShape.PointingHandCursor)
         self.manualButton.setStyleSheet("""  
             QPushButton:hover{  
@@ -67,7 +69,7 @@ class MainView(QWidget):
         """)
 
         self.automaticButton = QPushButton("Start Automatic Mode", self)
-        self.automaticButton.setGeometry(200, 400, 180, 35)
+        self.automaticButton.setGeometry(200, buttons_y, 185, 35)
         self.automaticButton.setCursor(Qt.CursorShape.PointingHandCursor)
         self.automaticButton.setStyleSheet("""  
             QPushButton:hover{  
@@ -84,7 +86,7 @@ class MainView(QWidget):
         """)
 
         self.resultButton = QPushButton("Show Result", self)
-        self.resultButton.setGeometry(410, 400, 130, 35)
+        self.resultButton.setGeometry(419, buttons_y, 130, 35)
         self.resultButton.setCursor(Qt.CursorShape.PointingHandCursor)
         self.resultButton.setStyleSheet("""  
             QPushButton:hover{  

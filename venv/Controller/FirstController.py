@@ -9,7 +9,7 @@ class FirstController(FirstView):
         self.view.showButton.clicked.connect(self.showMainPage)
 
     def showMainPage(self):
-        if (self.view.selectionMenu.currentText() in ('1', '2', '3')):
+        if (self.view.selectionMenu.currentText() in ('1', '2', '3','4')):
             self.mainController = MainController(int(self.view.selectionMenu.currentText()), self.view)
             self.mainController.mainView.show()
             self.view.hide()

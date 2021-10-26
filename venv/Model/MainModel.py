@@ -1,25 +1,21 @@
 class MainModel:
-    def hanoi(self, count, start, mid, end, result=list):
-        if count == 1:
-            result.append((start, end))
+    def hanoi(self, n, sourse, auxiliary, destination):
+        if n == 1:
+            yield (sourse, destination)
         else:
-            self.hanoi(count - 1, start, end, mid, result)
-            result.append((start, end))
-            self.hanoi(count - 1, mid, start, end, result)
+            yield from self.hanoi(n - 1, sourse, destination, auxiliary)
+            yield (sourse, destination)
+            yield from self.hanoi(n - 1, auxiliary, sourse, destination)
 
-        return result
-
-    def exhanoi(self, count, start, mid, end, result=list):
-        if count == 1:
-            result.append((end, mid))
-            result.append((start, end))
-            result.append((mid, start))
-            result.append((mid, end))
-            result.append((start, end))
+    def exhanoi(self, n, source, auxiliary, destination):
+        if n == 1:
+            yield (destination, auxiliary)
+            yield (source, destination)
+            yield (auxiliary, source)
+            yield (auxiliary, destination)
+            yield (source, destination)
         else:
-            self.exhanoi(count - 1, start, mid, end, result)
-            result = self.hanoi((3 * count) - 2, end, start, mid, result)
-            result.append((start, end))
-            result = self.hanoi((3 * count) - 1, mid, start, end, result)
-
-        return result
+            yield from self.exhanoi(n - 1, source, auxiliary, destination)
+            yield from self.hanoi((3 * n) - 2, destination, source, auxiliary)
+            yield (source, destination)
+            yield from self.hanoi((3 * n) - 1, auxiliary, source, destination)
