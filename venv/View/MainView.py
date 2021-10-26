@@ -29,10 +29,12 @@ class MainView(QWidget):
 
         self.disks = []
         diskWidth = 120
+        num = 1
         for disk_x in rods_x:
             disk_y = 320
             for d in range(count):
                 disk = QFrame(self)
+                disk.setToolTip(str(num))
                 x = int(disk_x - (diskWidth / 2)+5)
                 disk.setGeometry(x, disk_y, diskWidth, 20)
                 disk.setFrameShape(QFrame.Shape.StyledPanel)
@@ -43,3 +45,73 @@ class MainView(QWidget):
                 self.disks.append(disk)
                 diskWidth -= 10
                 disk_y -= 25
+                num+=1
+
+        self.manualButton = QPushButton("Manual Move",self)
+        self.manualButton.setGeometry(50,400,120,35)
+        self.manualButton.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.manualButton.setStyleSheet("""  
+            QPushButton:hover{  
+                background-color: #F29C1F; 
+                color: #4B4B4B;
+            }    
+            QPushButton{  
+            background-color: #4B4B4B; 
+            color: lightgray; 
+            font-size: 17px;  
+            border-radius: 5px; 
+            border:1px solid #4B4B4B; 
+            } 
+        """)
+
+        self.automaticButton = QPushButton("Start Automatic Mode", self)
+        self.automaticButton.setGeometry(200, 400, 180, 35)
+        self.automaticButton.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.automaticButton.setStyleSheet("""  
+            QPushButton:hover{  
+                background-color: #F29C1F; 
+                color: #4B4B4B;
+            }    
+            QPushButton{  
+            background-color: #4B4B4B; 
+            color: lightgray; 
+            font-size: 17px;  
+            border-radius: 5px; 
+            border:1px solid #4B4B4B; 
+            } 
+        """)
+
+        self.resultButton = QPushButton("Show Result", self)
+        self.resultButton.setGeometry(410, 400, 130, 35)
+        self.resultButton.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.resultButton.setStyleSheet("""  
+            QPushButton:hover{  
+                background-color: #F29C1F; 
+                color: #4B4B4B;
+            }    
+            QPushButton{  
+            background-color: #4B4B4B; 
+            color: lightgray; 
+            font-size: 17px;  
+            border-radius: 5px; 
+            border:1px solid #4B4B4B; 
+            } 
+        """)
+
+        self.backButton = QPushButton("Back", self)
+        self.backButton.setGeometry(10, 10, 55, 25)
+        self.backButton.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.backButton.setStyleSheet("""  
+            QPushButton:hover{  
+                background-color: #F29C1F; 
+                color: #4B4B4B;
+            }    
+            QPushButton{  
+            background-color: #4B4B4B; 
+            color: lightgray; 
+            font-size: 16px;  
+            border-radius: 5px; 
+            border:1px solid #4B4B4B; 
+            } 
+        """)
+
