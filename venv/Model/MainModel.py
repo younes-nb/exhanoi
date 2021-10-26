@@ -1,4 +1,4 @@
-class Model:
+class MainModel:
     def hanoi(self, count, start, mid, end, result=list):
         if count == 1:
             result.append((start, end))

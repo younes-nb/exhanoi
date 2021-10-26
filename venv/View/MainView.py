@@ -29,26 +29,28 @@ class MainView(QWidget):
 
         self.disks = []
         diskWidth = 120
-        num = 1
-        for disk_x in rods_x:
-            disk_y = 320
-            for d in range(count):
-                disk = QFrame(self)
-                disk.setToolTip(str(num))
-                x = int(disk_x - (diskWidth / 2)+5)
-                disk.setGeometry(x, disk_y, diskWidth, 20)
-                disk.setFrameShape(QFrame.Shape.StyledPanel)
-                disk.setStyleSheet("""  
-                    background-color: #F29C1F; 
-                    border-radius: 5px;
-                """)
-                self.disks.append(disk)
-                diskWidth -= 10
+        x = 0
+        disk_y = 320
+        for d in range(count * 3):
+            disk_x = rods_x[x]
+            disk = QFrame(self)
+            disk.setToolTip(str(d + 1))
+            disk.setGeometry(int(disk_x - (diskWidth / 2) + 5), disk_y, diskWidth, 20)
+            disk.setFrameShape(QFrame.Shape.StyledPanel)
+            disk.setStyleSheet("""  
+                background-color: #F29C1F; 
+                border-radius: 5px;
+            """)
+            self.disks.append(disk)
+            diskWidth -= 10
+            x += 1
+            if (x > 2):
+                x = 0
+            if ((d + 1) % 3 == 0):
                 disk_y -= 25
-                num+=1
 
-        self.manualButton = QPushButton("Manual Move",self)
-        self.manualButton.setGeometry(50,400,120,35)
+        self.manualButton = QPushButton("Manual Move", self)
+        self.manualButton.setGeometry(50, 400, 120, 35)
         self.manualButton.setCursor(Qt.CursorShape.PointingHandCursor)
         self.manualButton.setStyleSheet("""  
             QPushButton:hover{  
@@ -114,4 +116,3 @@ class MainView(QWidget):
             border:1px solid #4B4B4B; 
             } 
         """)
-
