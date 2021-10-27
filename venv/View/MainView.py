@@ -32,11 +32,15 @@ class MainView(QWidget):
         diskWidth = 150
         x = 0
         disk_y = 470
+        self.disks_x = []
+        self.disks_y = []
         for d in range(n * 3):
-            disk_x = pegs_x[x]
+            disk_x = int(pegs_x[x] - (diskWidth / 2) + 5)
+            self.disks_x.append(disk_x)
+            self.disks_y.append(disk_y)
             disk = QFrame(self)
             disk.setToolTip(str(d + 1))
-            disk.setGeometry(int(disk_x - (diskWidth / 2) + 5), disk_y, diskWidth, 20)
+            disk.setGeometry(disk_x, disk_y, diskWidth, 20)
             disk.setFrameShape(QFrame.Shape.StyledPanel)
             disk.setStyleSheet("""  
                 background-color: #F29C1F; 
