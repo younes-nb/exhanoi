@@ -2,6 +2,8 @@ from View.MainView import MainView
 from View.FirstView import FirstView
 from Model.MainModel import MainModel
 from PyQt6.QtWidgets import QFrame
+from PyQt6.QtCore import QPropertyAnimation, QPointF
+import time
 
 
 class MainController(MainView):
@@ -58,6 +60,9 @@ class MainController(MainView):
             self.mainView.resultButton.setDisabled(True)
 
     def initAutomaticButton(self):
+        self.mainView.manualButton.setDisabled(True)
+        self.mainView.automaticButton.setDisabled(True)
+        self.mainView.resultButton.setDisabled(True)
         for move in self.moves:
             match (move):
                 case ('A', 'B'):
@@ -94,4 +99,24 @@ class MainController(MainView):
             y = 470
         else:
             y = int(int(self.mainView.disks[destinationPeg[-1]].y().__repr__()) - 25)
-        self.mainView.disks[sourcePeg[-1]].move(x, y)
+        try:
+            self.animation(int(self.mainView.disks[sourcePeg[-1]].x().__repr__()),
+                           int(self.mainView.disks[sourcePeg[-1]].y().__repr__()),
+                           x, y, sourcePeg[-1], 5000)
+
+        except Exception as e:
+            print(e)
+
+    def animation(self, source_x, source_y, destination_x, destination_y, disk, duration, stop=False, pause=False):
+        self.anim = QPropertyAnimation(self.mainView.disks[disk], b"pos")
+        self.anim.setDuration(duration)
+        self.anim.setStartValue(QPointF(source_x, source_y))
+        self.anim.setKeyValueAt(0.4, QPointF(source_x, 120))
+        self.anim.setKeyValueAt(0.6, QPointF(destination_x, 120))
+        self.anim.setEndValue(QPointF(destination_x, destination_y))
+        # if (stop):
+        #     anim.stop()
+        # if (pause):
+        #     anim.pause()
+        self.anim.start()
+
