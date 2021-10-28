@@ -89,6 +89,37 @@ class MainView(QWidget):
             } 
         """)
 
+        self.pauseButton = QPushButton("Pause", self)
+        self.pauseButton.hide()
+        self.pauseButton.setGeometry(200, buttons_y, 90, 35)
+        self.pauseButton.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.pauseButton.setStyleSheet("""  
+            QPushButton:hover{  
+                background-color: #F29C1F; 
+                color: #4B4B4B;
+            }    
+            QPushButton{  
+            background-color: #4B4B4B; 
+            color: lightgray; 
+            font-size: 17px;  
+            border-radius: 5px; 
+            border:1px solid #4B4B4B; 
+            } 
+        """)
+
+        self.resumeButton = QPushButton("Resume", self)
+        self.resumeButton.hide()
+        self.resumeButton.setGeometry(296, buttons_y, 90, 35)
+        self.resumeButton.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.resumeButton.setDisabled(True)
+        self.resumeButton.setStyleSheet("""  
+            background-color:gray; 
+            color: #4B4B4B; 
+            font-size: 17px;  
+            border-radius: 5px; 
+            border:1px solid #4B4B4B; 
+        """)
+
         self.resultButton = QPushButton("Show Result", self)
         self.resultButton.setGeometry(419, buttons_y, 130, 35)
         self.resultButton.setCursor(Qt.CursorShape.PointingHandCursor)
