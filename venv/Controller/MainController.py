@@ -7,10 +7,11 @@ from functools import partial
 
 
 class MainController(MainView):
-    def __init__(self, n, firstView=FirstView):
+    def __init__(self, n, duration, firstView=FirstView):
         super().__init__(n)
         self.mainView = MainView(n)
         self.firstView = firstView
+        self.duration = duration
         mainModel = MainModel()
         self.moves = mainModel.exhanoi(n, 'A', 'B', 'C', )
         self.groupAnime = QSequentialAnimationGroup(self)
@@ -130,11 +131,11 @@ class MainController(MainView):
         if (manual):
             self.manualAnimation(self.mainView.disks_x[sourcePeg[-1]],
                                  self.mainView.disks_y[sourcePeg[-1]],
-                                 x, y, sourcePeg[-1], 5000)
+                                 x, y, sourcePeg[-1], self.duration)
         else:
             self.autoAnimation(self.mainView.disks_x[sourcePeg[-1]],
                                self.mainView.disks_y[sourcePeg[-1]],
-                               x, y, sourcePeg[-1], 5000)
+                               x, y, sourcePeg[-1], self.duration)
 
     def manualAnimation(self, source_x, source_y, destination_x, destination_y, disk, duration):
         self.anim = QPropertyAnimation(self.mainView.disks[disk], b"pos")

@@ -1,5 +1,5 @@
-from PyQt6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QPushButton, QComboBox
-from PyQt6.QtGui import QPixmap
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QComboBox, QDial, QStyleOptionSlider
+from PyQt6.QtGui import QPixmap, QLinearGradient
 from PyQt6.QtCore import Qt
 
 
@@ -34,6 +34,25 @@ class FirstView(QWidget):
         for num in range(1, 5):
             self.selectionMenu.addItem(str(num))
 
+        self.speedDial = QDial()
+        self.speedDial.setFixedSize(70, 70)
+        self.speedDial.setWrapping(True)
+        self.speedDial.setRange(1, 100)
+        self.speedDial.setValue(50)
+        self.speedDial.setNotchesVisible(True)
+        self.speedDial.setNotchTarget(5)
+        self.speedDial.setCursor(Qt.CursorShape.PointingHandCursor)
+
+        self.speedLable = QLabel("Speed : {}%".format(self.speedDial.value()))
+        self.speedLable.setStyleSheet("""  
+            color: #F29C1F;  
+            font-size: 17px;   
+        """)
+
+        speedSection = QHBoxLayout()
+        speedSection.addWidget(self.speedDial)
+        speedSection.addWidget(self.speedLable)
+
         self.showButton = QPushButton("Show")
         self.showButton.setFixedSize(95, 35)
         self.showButton.setCursor(Qt.CursorShape.PointingHandCursor)
@@ -54,8 +73,9 @@ class FirstView(QWidget):
 
         self.layout.addWidget(hanoiImage)
         self.layout.addWidget(hanoiLabel)
-        self.layout.addWidget(self.selectionMenu)
-        self.layout.addWidget(self.showButton)
+        self.layout.addWidget(self.selectionMenu, 1, Qt.AlignmentFlag.AlignCenter)
+        self.layout.addLayout(speedSection)
+        self.layout.addWidget(self.showButton, 1, Qt.AlignmentFlag.AlignCenter)
 
         self.layout.addStretch(1)
         self.layout.setSpacing(20)
